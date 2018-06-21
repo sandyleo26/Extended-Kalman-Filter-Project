@@ -145,6 +145,14 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     
   ekf_.Predict();
 
+
+  if (counter == 272) {
+      cout << endl;
+  cout << "After Predict" << endl;
+  cout << "x_ = " << ekf_.x_ << endl;
+  cout << "sensor type = " << measurement_pack.sensor_type_ << ", value: " << measurement_pack.raw_measurements_ << endl;
+  cout << "Hj = " << ekf_.Hj_ << endl;
+  }
   /*****************************************************************************
    *  Update
    ****************************************************************************/
@@ -166,6 +174,10 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   }
 
   // print the output
+  cout << endl;
+  cout<< "counter = " << counter++ << endl;
   cout << "x_ = " << ekf_.x_ << endl;
-  cout << "P_ = " << ekf_.P_ << endl;
+  cout << "sensor type = " << measurement_pack.sensor_type_ << ", value: " << measurement_pack.raw_measurements_ << endl;
+  cout << "Hj = " << ekf_.Hj_ << endl;
+  // cout << "P_ = " << ekf_.P_ << endl;
 }
