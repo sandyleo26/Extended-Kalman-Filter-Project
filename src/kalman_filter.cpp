@@ -58,15 +58,6 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
     * update the state by using Extended Kalman Filter equations
   */
   VectorXd z_pred = tools.Cartesian2Polar(x_);
-
-  // VectorXd z_norm = z;
-  // if (z(1) > M_PI) z_norm(1) -= 2*M_PI;
-  // else if (z(1) < -M_PI) z_norm(1) += 2*M_PI;
-
-  // std::cout << std::endl;
-  // std::cout << "z_pred: " << z_pred << std::endl;
-  // std::cout << "z_norm: " << z_norm << std::endl;
-
 	VectorXd y = z - z_pred;
 
   // normalize y
